@@ -1,6 +1,19 @@
 {
-    "workbench.editorAssociations": {   
-        "*.md": "vscode.markdown.preview.editor",
+    "cSpell.words": [
+        "APILOGICSERVER",
+        "sqlalchemy",
+        "backref",
+        "cascade_backrefs",
+        "proxied",
+        "redef",
+        "jsonapi",
+        "jsonify",
+        "sqltypes"
+    ],
+    "[Log]": {
+        "editor.wordWrap": "off"
     },
-    "workbench.startupEditor": "welcomePage"
+    "workbench.editorAssociations": {
+        "*.md": "vscode.markdown.preview.editor"
+    }
 }

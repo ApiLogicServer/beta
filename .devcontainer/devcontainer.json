@@ -7,12 +7,12 @@
 	"context": "..",
 
 	// Update the 'dockerFile' property if you aren't using the standard 'Dockerfile' filename.
-	"dockerFile": "../devops/For_VSCode.dockerfile",
+	"dockerFile": "For_VSCode.dockerfile",
 
 	// Set *default* container specific settings.json values on container create.
 	"settings": {},
 
-	// add network -- enable this as required, e.g., https://valhuber.github.io/ApiLogicServer/Database-Connectivity/
+	// add network -- enable this as required, e.g., https://apilogicserver.github.io/Docs/Database-Connectivity/
 	// "runArgs": ["--network=dev-network"],
 
 	// Add the IDs of extensions you want installed when the container is created.
@@ -31,20 +31,13 @@
 		"github-cli": "latest"
 	  },
 
-	"postAttachCommand": "/bin/bash .devcontainer/setup.sh",
+	"postAttachCommand": "/bin/bash .devcontainer/setup.sh"
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
 
 	// Uncomment the next line to run commands after the container is created - for example installing curl.
-	
-	// "postCreateCommand": "echo create Tutorial project: ApiLogicServer create --project_name=./ --db_url=",
-
-	"customizations": {
-		"codespaces": {
-		  "openFiles": [
-			".devcontainer/readme.md"
-		  ]
-		}
-	  }	
-
+	// "postCreateCommand": "apt-get update && apt-get install -y curl",
 
 	// Uncomment when using a ptrace-based debugger like C++, Go, and Rust
 	// "runArgs": [ "--cap-add=SYS_PTRACE", "--security-opt", "seccomp=unconfined" ],
