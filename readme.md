@@ -1,178 +1,173 @@
-# Tutorial Setup
+## SQL Server testing with VSC
 
-You must _Establish Your Python Environment_ to run the Tutorial:
-
-1.  Execute the __Setup and Run__ procedure below, then 
-2. [Open the Tutorial](Tutorial.md)
-
-The standard API Logic Project Readme follows, below.
-
-&nbsp;
-# Setup and Run
-
-To run your project, the system requires various runtime systems for data access, api, and logic.  These are included with API Logic Server ([architecture doc here](https://apilogicserver.github.io/Docs/Architecture-What-Is/)).  So, to run your project ([instructions here](#setup-instructions)):
-
-1.  __Establish your Python Environment__ to activate these runtime systems
-2. __Run__
+This project illustrates failures to load the Python extension when the container is configured for amd and odbc12: [click here for more specifics](#docker-arm-fails).
 
 &nbsp;
 
-# Key Customization Files
+---
 
-Your project is ready to run, but it's likely you'll want to customize it - declare logic, new endpoints, etc.
+### Background
 
-The ___Key Customization Files___ listed in the table below are created as stubs, intended for you to add customizations that extend
-the created API, Logic and Web App.
+While Sql/Server itself runs nicely under docker, there is considerable complexity in installing OCBC.  As further described below, this led to a number of issues (ignoring time spent):
 
-* Since they are separate files, the project can be
-[rebuilt](https://apilogicserver.github.io/Docs/Project-Rebuild/) (e.g., synchronized with a revised schema), preserving your customizations.
+* `pyodbc` not pip-installed by default (installs fail unless odbc is installed, which is complex and might not be needed)
 
-Please see the `nw` sample for examples of typical customizations.  You can open it in GitHub (use Shift + "." to view in project mode) - [click here](https://github.com/ApiLogicServer/demo).
+* multiple docker images (arm, amd)
 
-| Directory | Usage                         | Key Customization File             | Typical Customization                                                                 |
-|:-------------- |:------------------------------|:-----------------------------------|:--------------------------------------------------------------------------------------|
-| ```api``` | **JSON:API**<br>*Ready to Run*                    | ```api/customize_api.py```         | Add new end points / services                                                         |
-| ```ui``` | **Multi-Page Admin App**<br>*Ready to Run*  | ```ui/admin/admin.yaml```          | Control field display - order, captions etc.                                          |
-| ```database``` | SQLAlchemy Data Model Classes | ```database/customize_models.py``` | Add derived attributes, and relationships missing in the schema                       |
-| ```logic``` | **Transactional Logic**<br>spreadsheet-like rules   | ```logic/declare_logic.py```       | Declare multi-table derivations, constraints, and Python events such as send mail / messages |
-| ```security``` | Authentication, Authorization   | ```security/declare_security.py```          | Control login, role-based row access         |
-| ```tests``` | Behave Test Suite              | ```tests/api_logic_server_behave/features```          | Declare and implement [Behave Tests](https://apilogicserver.github.io/Docs/Behave/)                                          |
+* arm image unable to load odbc *and* run in VSCode .devcontainer
+
+I am eager for suggestions to simplify / unify sql/server and odbc usage.  I'd hoped that `mcr.microsoft.com/devcontainers/python:3.11-bullseye` might include odbc, but it did not appear to be the case.  Since this image is considerably larger (1.77G) than python:3.9.4-slim-bullseye (895M), I went with the python versions.
 
 &nbsp;
 
-# Project Requirements
+#### Complex ODBC Setup
 
-Optionally, you can **document requirements** as part of an **executable test plan**.  Test plan execution creates documentation (in markdown), including **requirements traceability** into implementation.  [See example here](test/api_logic_server_behave/reports/Behave%20Logic%20Report%20Sample.md).
+As noted above, `pip` installs of pyodbc fail unless the odbc is installed.  Since not all users need odbc, the `pip` install does not include pyodbc.
 
-&nbsp;
+##### For users
 
-# Project Information
+For users requiring pyodbc (SqlServer), there are 2 installs:
 
-This API Logic Project was created with the `ApiLogicServer create` command.
-For information on Managing API Logic Projects, [click here](https://apilogicserver.github.io/Docs/Project-Structure).
+* ODBC Driver: [using `brew` as described here](../install-pyodbc)
 
-| About                    | Info                               |
-|:-------------------------|:-----------------------------------|
-| Created                  | July 04, 2023 07:10:17                      |
-| API Logic Server Version | 09.00.14           |
-| Created in directory     | ../../../servers/demo |
-| API Name                 | api          |
-| Execution begins with    | `api_logic_server_run.py`          |
+* `pip install pyodbc==4.0.34`
 
 &nbsp;
 
-# Setup Instructions
+##### For ApiLogicServer-dev
 
-Setup your Python environment, according to whether you did a *local install*, or *Docker*.  Choose the appropriate section, then run.
+ApiLogicServer-dev `requirements.txt` does **not** install odbc.  If you wish to test Sql/Server in ApiLogicServer-dev, follow the user setup instructions above.
 
 &nbsp;
 
-## Establish Your Python Environment - Local Install
+#### Docker
 
-You `requirements.txt` has already been created, so...
+Docker creation provides the opportunity to pre-install odbc and simplify life for Sql/Server users.  After considerable effort, we were able to create dockers with a *consistent* verisons of odbc (v18).  The procedure differs for amd/intel vs. arm, as described below.
 
-```bash title="Install API Logic Server in a Virtual Environment"
-python -m venv venv                        # may require python3 -m venv venv
-venv\Scripts\activate                      # mac/linux: source venv/bin/activate
-python -m pip install -r requirements.txt  # accept "new Virtual environment"
+&nbsp;
+
+##### Docker amd works
+
+The above instructions depend on `brew`, which is not convenient within a dockerfile.  So, it's installed as follows: [click to see dockerfile](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/docker/api_logic_server.Dockerfile).  This works well with Sql/Server, running as a devcontainer under VSCode.
+
+* Note: this took days to discover.  Special thanks to Max Tardideau at [Gallium Data](https://www.galliumdata.com).
+
+
+&nbsp;
+
+##### Docker arm fails
+
+The standard arm version is installed like this: [click to see dockerfile](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/docker/api_logic_server_arm.Dockerfile).  This...
+
+* Works well with VSCode devcontainers, for *non-odbc* databases
+
+* But, **does not include odbc.**
+
+    * Attempting to introduce odbc fails with *ERROR: failed to solve: process "/bin/sh -c ACCEPT_EULA=Y apt-get install -y msodbcsql18" did not complete successfully: exit code: 100*.
+
+odbc inclusion was solved with [this finding](https://stackoverflow.com/questions/71414579/how-to-install-msodbcsql-in-debian-based-dockerfile-with-an-apple-silicon-host), using `FROM --platform=linux/amd64` (special thanks to Joshua Schlichting and Dale K).
+
+So, we created [this dockerfile **with odbc**](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/docker/api_logic_server_arm_x.Dockerfile).  Use it with a .devcontainer specifying `FROM apilogicserver/api_logic_server_arm_x`, or use [this test project](https://github.com/ApiLogicServer/beta).
+
+* That does indeed enable odbc access from docker...
+
+* But it ***fails with VSCode*** -- the Python extension is either disabled, or hangs on install (screen shots below).
+
+![Unable to load Python](images/vscode/python-disabled.png)
+
+![Python install hangs](images/vscode/python-install-hangs.png)
+
+* Issue: on start, message: *WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested*
+
+&nbsp;
+
+#### VSC Bug - Run Configs
+
+VSCode has a bug where it cannot parse Run Configs for SqlSvr:
+
+```bash
+zsh: no matches found: --db_url=mssql+pyodbc://sa:Posey3861@localhost:1433/NORTHWND?driver=ODBC+Driver+18+for+SQL+Server&trusted_connection=no&Encrypt=no
 ```
 
-Notes:
+&nbsp;
 
-* See also the `venv_setup` directory in this API Logic Project.
+### Testing
 
-* If using SqlServer, install `pyodbc`.  Not required for docker-based projects.  For local installs, see the [Quick Start](https://apilogicserver.github.io/Docs/Install-pyodbc/).
+There are several important testing configurations.
 
 &nbsp;
 
-## Establish Your Python Environment - Docker
+#### 1. ApiLogicServer-dev
 
-Your runtime systems are part of Dev Container, which you probably activated when you [opened the project](https://apilogicserver.github.io/Docs/IDE-Execute/).  
- * If you did not accept the "Open in Container" option when you started VSCode, use __View > Command Palette > Remote-Containers: Reopen in Container__.
+To get around the *VSC bug*, hacks were made to the Run Configs, and the CLI, as described below.
 
-&nbsp;
+The run config has entries like this:
 
-## Run
+```
+        {
+            "name": "SQL Server nw (bypass vsc bug)",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/api_logic_server_cli",
+            "program": "cli.py",
+            "redirectOutput": true,
+            "argsExpansion": "none",
+            "args": ["create",
+                "--project_name=../../../servers/sqlsvr_nw",
+                "--db_url=sqlsvr-nw"
+            ],
+            "console": "integratedTerminal"
+        },
+```
 
-To run your project
+The CLI detects db_url's like `sqlsvr-nw`, and converts them to strings like this for [Database Connectivity > Docker Databases](../Database-Connectivity/#docker-databases){:target="_blank" rel="noopener"}:
+```
+    elif project.db_url == 'sqlsvr-nw':  # work-around - VSCode run config arg parsing
+        rtn_abs_db_url = 'mssql+pyodbc://sa:Posey3861@localhost:1433/NORTHWND?driver=ODBC+Driver+18+for+SQL+Server&trusted_connection=no&Encrypt=no'
+    elif project.db_url == 'sqlsvr-nw-docker':  # work-around - VSCode run config arg parsing
+        rtn_abs_db_url = 'mssql+pyodbc://sa:Posey3861@HOST_IP:1433/NORTHWND?driver=ODBC+Driver+17+for+SQL+Server&trusted_connection=no'
+        host_ip = "10.0.0.234"  # ApiLogicServer create  --project_name=/localhost/sqlsvr-nw-docker --db_url=sqlsvr-nw-docker
+        if os.getenv('HOST_IP'):
+            host_ip = os.getenv('HOST_IP')  # type: ignore # type: str
+        rtn_abs_db_url = rtn_abs_db_url.replace("HOST_IP", host_ip)
+    elif project.db_url == 'sqlsvr-nw-docker-arm':  # work-around - VSCode run config arg parsing
+        rtn_abs_db_url = 'mssql+pyodbc://sa:Posey3861@10.0.0.77:1433/NORTHWND?driver=ODBC+Driver+18+for+SQL+Server&trusted_connection=no&Encrypt=no'
+        host_ip = "10.0.0.77"  # ApiLogicServer create  --project_name=/localhost/sqlsvr-nw-docker --db_url=sqlsvr-nw-docker-arm
+        if os.getenv('HOST_IP'):
+            host_ip = os.getenv('HOST_IP')  # type: ignore # type: str
+        rtn_abs_db_url = rtn_abs_db_url.replace("HOST_IP", host_ip)
+```
 
-![Start Project](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/tutorial/2-apilogicproject-nutshell.png?raw=true)
+So, on ApiLogicServer-dev:
 
-As shown above:
-
-1. Use the pre-supplied Run Configuration; use either:
-    * `**ApiLogicServer - No Security (e.g., for behave tests** to run *with security* (recommended initially)
-    * `**ApiLogicServer** to run [with security](https://apilogicserver.github.io/Docs/Security-Swagger/)
-2. Click the url in the console to start the Admin App
-    * Use it to explore your data (shown below)
-    * And your API (via Swagger)
-
-![Admin App](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/ui-admin/run-admin-app.png?raw=true)
-
-
-&nbsp;
-
-# Appendix: Key Technologies
-
-API Logic Server is based on the projects shown below.
-Consult their documentation for important information.
-
-&nbsp;
-
-### SARFS JSON:API Server
-
-[SAFRS: Python OpenAPI & JSON:API Framework](https://github.com/thomaxxl/safrs)
-
-SAFRS is an acronym for SqlAlchemy Flask-Restful Swagger.
-The purpose of this framework is to help python developers create
-a self-documenting JSON API for sqlalchemy database objects and relationships.
-
-These objects are serialized to JSON and 
-created, retrieved, updated and deleted through the JSON API.
-Optionally, custom resource object methods can be exposed and invoked using JSON.
-
-Class and method descriptions and examples can be provided
-in yaml syntax in the code comments.
-
-The description is parsed and shown in the swagger web interface.
-The result is an easy-to-use
-swagger/OpenAPI and JSON:API compliant API implementation.
+1. Verify your machine has odbc **18** (using `brew which`)
+2. Use **Run Config:** `SQL Server nw (bypass vsc bug)`
 
 &nbsp;
 
-### LogicBank
-[Transaction Logic for SQLAlchemy Object Models](https://apilogicserver.github.io/Docs/Logic-Why/)
 
-Use Logic Bank to govern SQLAlchemy update transaction logic - 
-multi-table derivations, constraints, and actions such as sending mail or messages. Logic consists of _both:_
+#### 2. Local `pip` install
 
-*   **Rules - 40X** more concise using a spreadsheet-like paradigm, and
+Note: since the docker image is odbc17, the following commands fail in docker, but run in pip install when you've installed odbc18:
 
-*   **Python - control and extensibility,** using standard tools and techniques
+```
+ApiLogicServer create --project_name=sqlsvr-nw --db_url=sqlsvr-nw
+```
 
-Logic Bank is based on SQLAlchemy - it handles `before_flush` events to enforce your logic.
-Your logic therefore applies to any SQLAlchemy-based access - JSON:Api, Admin App, etc.
+#### 3. Docker (ARM pending)
 
-&nbsp;
+You can run a ***Docker with ODBC*** (pending for arm with VSC):
 
-### SQLAlchemy
+```
+# arm docker uses odbc18 (note the quotes around the db_url):
+ApiLogicServer create  --project_name=/localhost/sqlserver --db_url='mssql+pyodbc://sa:Posey3861@10.0.0.77:1433/NORTHWND?driver=ODBC+Driver+18+for+SQL+Server&trusted_connection=no&Encrypt=no'
 
-[Object Relational Mapping for Python](https://docs.sqlalchemy.org/en/13/).
+# or, using the abbrevation
+ApiLogicServer create  --project_name=/localhost/sqlsvr-nw-docker --db_url=sqlsvr-nw-docker-arm
 
-SQLAlchemy provides Python-friendly database access for Python.
+# amd docker requires IP addresses:
+ApiLogicServer create --project_name=/localhost/sqlserver --db_url='mssql+pyodbc://sa:Posey3861@10.0.0.234:1433/NORTHWND?driver=ODBC+Driver+18+for+SQL+Server&trusted_connection=no&Encrypt=no'
 
-It is used by JSON:Api, Logic Bank, and the Admin App.
-
-SQLAlchemy processing is based on Python `model` classes,
-created automatically by API Logic Server from your database,
-and saved in the `database` directory.
-
-&nbsp;
-
-### Admin App
-
-This generated project also contains a React Admin app:
-* Multi-page - including page transitions to "drill down"
-* Multi-table - master / details (with tab sheets)
-* Intelligent layout - favorite fields first, predictive joins, etc
-* Logic Aware - updates are monitored by business logic
+# or, using the abbreviation (amd):
+ApiLogicServer create  --project_name=/localhost/sqlsvr-nw-docker --db_url=sqlsvr-nw-docker
+```
