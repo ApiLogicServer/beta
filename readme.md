@@ -1,6 +1,21 @@
 ## SQL Server testing with VSC
 
-[This test project](https://github.com/ApiLogicServer/beta) illustrates ***failures to load the VSCode Python extension in devcontainers specifying odbc and arm***.  For more details, [click here](#docker-arm-fails).
+[This test project](https://github.com/ApiLogicServer/beta) illustrates ***failures to load the VSCode Python extension in devcontainers specifying odbc and arm***.  
+
+&nbsp;
+
+### TL;DR
+
+I created this [apilogicserver/api_logic_server_arm_x image **with odbc**](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/docker/api_logic_server_arm_x.Dockerfile), which note includes `FROM --platform=linux/amd64`for odbc.
+
+    - odbc operates, but 
+    - fails to load Python VSC (sometimes hangs, sometimes disabled)
+
+[This test project](https://github.com/ApiLogicServer/beta) illustrates ***failures to load the VSCode Python extension in devcontainers specifying odbc and arm***.  
+
+For more details, [click here](#docker-arm-fails).
+
+Submitted [this issue](https://github.com/microsoft/vscode-python/issues/21554).
 
 &nbsp;
 
