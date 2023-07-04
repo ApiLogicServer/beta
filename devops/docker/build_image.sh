@@ -6,7 +6,7 @@
 #    in terminal (not in VSCode docker - docker is not installed there), cd to your project
 #    build a container for your project: `sh build_container.sh`
 
-projectname="created"  # lower case, only
+projectname="demo"  # lower case, only
 repositoryname="apilogicserver"
 version="1.0.0"
 

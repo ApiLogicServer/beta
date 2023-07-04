@@ -14,8 +14,8 @@ from flask_jwt_extended import create_access_token
 # Alter this file per your database maintenance policy
 #    See https://apilogicserver.github.io/Docs/Project-Rebuild/#rebuilding
 #
-# Created:  July 01, 2023 12:32:43
-# Database: sqlite:////Users/val/dev/ApiLogicServer/ApiLogicServer-dev/org_git/Org-ApiLogicServer/created/database/authentication_db.sqlite
+# Created:  July 04, 2023 07:10:17
+# Database: sqlite:////Users/val/dev/ApiLogicServer/ApiLogicServer-dev/servers/demo/database/authentication_db.sqlite
 # Dialect:  sqlite
 #
 # mypy: ignore-errors
