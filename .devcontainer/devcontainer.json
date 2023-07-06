@@ -10,13 +10,22 @@
 	"dockerFile": "For_VSCode.dockerfile",
 
 	// Set *default* container specific settings.json values on container create.
-	"settings": {},
+	// "settings": {},
 
 	// add network -- enable this as required, e.g., https://apilogicserver.github.io/Docs/Database-Connectivity/
 	// "runArgs": ["--network=dev-network"],
 
 	// Add the IDs of extensions you want installed when the container is created.
-	"extensions": ["ms-python.python"],
+	// "extensions": ["ms-python.python"],   **** NO - must go inside customizations
+
+	"customizations": {
+		// Configure properties specific to VS Code.
+		"vscode": {
+			// Set default container specific settings.json values on container create.
+			"settings": {},
+			"extensions": []
+		}
+	},
 	
 	"portsAttributes": {
 		"5656": {

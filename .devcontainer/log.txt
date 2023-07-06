@@ -1,0 +1,366 @@
+[14 ms] Dev Containers 0.295.0 in VS Code 1.79.2 (695af097c7bd098fbf017ce3ac85e09bbc5dda06).
+[14 ms] Start: Resolving Remote
+[18 ms] Setting up container for folder or workspace: /Users/val/dev/ApiLogicServer/ApiLogicServer-dev/servers/beta
+[19 ms] Context: desktop-linux
+[20 ms] Start: Check Docker is running
+[20 ms] Start: Run: docker version --format {{.Server.APIVersion}}
+[64 ms] Server API version: 1.43
+[65 ms] Start: Run: docker volume ls -q
+[104 ms] Start: Run: docker ps -q -a --filter label=vsch.local.folder=/Users/val/dev/ApiLogicServer/ApiLogicServer-dev/servers/beta --filter label=vsch.quality=stable
+[143 ms] Start: Run: docker ps -q -a --filter label=devcontainer.local_folder=/Users/val/dev/ApiLogicServer/ApiLogicServer-dev/servers/beta --filter label=devcontainer.config_file=/Users/val/dev/ApiLogicServer/ApiLogicServer-dev/servers/beta/.devcontainer/devcontainer.json
+[180 ms] Start: Run: docker ps -q -a --filter label=devcontainer.local_folder=/Users/val/dev/ApiLogicServer/ApiLogicServer-dev/servers/beta
+[217 ms] Start: Run: docker ps -q -a --filter label=devcontainer.local_folder=/Users/val/dev/ApiLogicServer/ApiLogicServer-dev/servers/beta
+[256 ms] Start: Run: /Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper (Plugin).app/Contents/MacOS/Code Helper (Plugin) --ms-enable-electron-run-as-node /Users/val/.vscode/extensions/ms-vscode-remote.remote-containers-0.295.0/dist/spec-node/devContainersSpecCLI.js read-configuration --workspace-folder /Users/val/dev/ApiLogicServer/ApiLogicServer-dev/servers/beta --id-label devcontainer.local_folder=/Users/val/dev/ApiLogicServer/ApiLogicServer-dev/servers/beta --id-label devcontainer.config_file=/Users/val/dev/ApiLogicServer/ApiLogicServer-dev/servers/beta/.devcontainer/devcontainer.json --log-level debug --log-format json --config /Users/val/dev/ApiLogicServer/ApiLogicServer-dev/servers/beta/.devcontainer/devcontainer.json --mount-workspace-git-root true
+[387 ms] @devcontainers/cli 0.42.0. Node.js v16.17.1. darwin 22.5.0 arm64.
+[387 ms] Start: Run: git rev-parse --show-cdup
+[398 ms] Start: Run: docker ps -q -a --filter label=devcontainer.local_folder=/Users/val/dev/ApiLogicServer/ApiLogicServer-dev/servers/beta --filter label=devcontainer.config_file=/Users/val/dev/ApiLogicServer/ApiLogicServer-dev/servers/beta/.devcontainer/devcontainer.json
+[447 ms] Start: Run: /Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper (Plugin).app/Contents/MacOS/Code Helper (Plugin) --ms-enable-electron-run-as-node /Users/val/.vscode/extensions/ms-vscode-remote.remote-containers-0.295.0/dist/spec-node/devContainersSpecCLI.js up --user-data-folder /Users/val/Library/Application Support/Code/User/globalStorage/ms-vscode-remote.remote-containers/data --container-session-data-folder /tmp/devcontainers-44a37fe8-29bd-43f8-8e5f-85ece9cba0571688603075718 --workspace-folder /Users/val/dev/ApiLogicServer/ApiLogicServer-dev/servers/beta --workspace-mount-consistency cached --id-label devcontainer.local_folder=/Users/val/dev/ApiLogicServer/ApiLogicServer-dev/servers/beta --id-label devcontainer.config_file=/Users/val/dev/ApiLogicServer/ApiLogicServer-dev/servers/beta/.devcontainer/devcontainer.json --log-level debug --log-format json --config /Users/val/dev/ApiLogicServer/ApiLogicServer-dev/servers/beta/.devcontainer/devcontainer.json --default-user-env-probe loginInteractiveShell --mount type=volume,source=vscode,target=/vscode,external=true --skip-post-create --update-remote-user-uid-default on --mount-workspace-git-root true
+[577 ms] @devcontainers/cli 0.42.0. Node.js v16.17.1. darwin 22.5.0 arm64.
+[577 ms] Start: Run: docker buildx version
+[642 ms] github.com/docker/buildx v0.10.5 86bdced7766639d56baa4c7c449a4f6468490f87
+[642 ms] 
+[642 ms] Start: Resolving Remote
+[644 ms] Start: Run: git rev-parse --show-cdup
+[654 ms] Start: Run: docker ps -q -a --filter label=devcontainer.local_folder=/Users/val/dev/ApiLogicServer/ApiLogicServer-dev/servers/beta --filter label=devcontainer.config_file=/Users/val/dev/ApiLogicServer/ApiLogicServer-dev/servers/beta/.devcontainer/devcontainer.json
+[702 ms] Start: Run: docker inspect --type image apilogicserver/api_logic_server_arm_x
+[745 ms] local container features stored at: /Users/val/.vscode/extensions/ms-vscode-remote.remote-containers-0.295.0/dist/node_modules/vscode-dev-containers/container-features
+[746 ms] Start: Run: tar --no-same-owner -x -f -
+[753 ms] * Processing feature: github-cli
+[754 ms] (!) WARNING: Using the deprecated 'github-cli' Feature. See https://github.com/devcontainers/features/tree/main/src/github-cli#example-usage for the updated Feature.
+[990 ms] Start: Run: docker-credential-desktop get
+[1601 ms] * Fetching feature: github-cli_1_oci
+[2044 ms] Start: Run: docker buildx build --load --build-arg BUILDKIT_INLINE_CACHE=1 -f /var/folders/4k/r69q312d4j788fthspybb88m0000gp/T/devcontainercli/container-features/0.42.0-1688603076768/Dockerfile-with-features -t vsc-beta-78edcfd3988cba6ef95526d2a3429082bf5526fe4fca2b4b894f9a048ad1c414 --target dev_containers_target_stage --build-context dev_containers_feature_content_source=/var/folders/4k/r69q312d4j788fthspybb88m0000gp/T/devcontainercli/container-features/0.42.0-1688603076768 --build-arg _DEV_CONTAINERS_BASE_IMAGE=dev_container_auto_added_stage_label --build-arg _DEV_CONTAINERS_IMAGE_USER=api_logic_server --build-arg _DEV_CONTAINERS_FEATURE_CONTENT_SOURCE=dev_container_feature_content_temp /Users/val/dev/ApiLogicServer/ApiLogicServer-dev/servers/beta
+[+] Building 3.7s (18/18) FINISHED                                              
+ => [internal] load build definition from Dockerfile-with-features         0.0s
+ => => transferring dockerfile: 2.29kB                                     0.0s
+ => [internal] load .dockerignore                                          0.0s
+ => => transferring context: 2B                                            0.0s
+ => resolve image config for docker.io/docker/dockerfile:1.4               1.7s
+ => [auth] docker/dockerfile:pull token for registry-1.docker.io           0.0s
+ => CACHED docker-image://docker.io/docker/dockerfile:1.4@sha256:9ba7531b  0.0s
+ => [internal] load metadata for docker.io/apilogicserver/api_logic_serve  1.8s
+ => [context dev_containers_feature_content_source] load .dockerignore     0.0s
+ => => transferring dev_containers_feature_content_source: 2B              0.0s
+ => [auth] apilogicserver/api_logic_server_arm_x:pull token for registry-  0.0s
+ => [context dev_containers_feature_content_source] load from client       0.0s
+ => => transferring dev_containers_feature_content_source: 18.93kB         0.0s
+ => [dev_container_auto_added_stage_label 1/1] FROM docker.io/apilogicser  0.0s
+ => CACHED [dev_containers_target_stage 1/4] RUN mkdir -p /tmp/dev-contai  0.0s
+ => CACHED [dev_containers_feature_content_normalize 1/2] COPY --from=dev  0.0s
+ => CACHED [dev_containers_feature_content_normalize 2/2] RUN chmod -R 07  0.0s
+ => CACHED [dev_containers_target_stage 2/4] COPY --from=dev_containers_f  0.0s
+ => CACHED [dev_containers_target_stage 3/4] RUN echo "_CONTAINER_USER_HO  0.0s
+ => CACHED [dev_containers_target_stage 4/4] RUN --mount=type=bind,from=d  0.0s
+ => preparing layers for inline cache                                      0.0s
+ => exporting to image                                                     0.0s
+ => => exporting layers                                                    0.0s
+ => => writing image sha256:d308b22ecb0d1eb74f6069f00fbed3dc383ff5e774a80  0.0s
+ => => naming to docker.io/library/vsc-beta-78edcfd3988cba6ef95526d2a3429  0.0s
+[5942 ms] Start: Run: docker events --format {{json .}} --filter event=start
+[5943 ms] Start: Starting container
+[5943 ms] Start: Run: docker run --sig-proxy=false -a STDOUT -a STDERR --mount type=bind,source=/Users/val/dev/ApiLogicServer/ApiLogicServer-dev/servers/beta,target=/workspaces/beta,consistency=cached --mount type=volume,src=vscode,dst=/vscode -l devcontainer.local_folder=/Users/val/dev/ApiLogicServer/ApiLogicServer-dev/servers/beta -l devcontainer.config_file=/Users/val/dev/ApiLogicServer/ApiLogicServer-dev/servers/beta/.devcontainer/devcontainer.json --entrypoint /bin/sh vsc-beta-78edcfd3988cba6ef95526d2a3429082bf5526fe4fca2b4b894f9a048ad1c414 -c echo Container started
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+[6169 ms] Start: Run: docker ps -q -a --filter label=devcontainer.local_folder=/Users/val/dev/ApiLogicServer/ApiLogicServer-dev/servers/beta --filter label=devcontainer.config_file=/Users/val/dev/ApiLogicServer/ApiLogicServer-dev/servers/beta/.devcontainer/devcontainer.json
+Container started
+[6211 ms] Start: Run: docker inspect --type container dd26febe15ca
+[6252 ms] Start: Inspecting container
+[6252 ms] Start: Run: docker inspect --type container dd26febe15ca97748f580644379ebfc966115bfbfb99eb696cbe14c2aea03884
+[6294 ms] Start: Run in container: /bin/sh
+[6295 ms] Start: Run in container: uname -m
+[6411 ms] x86_64
+[6411 ms] 
+[6411 ms] Start: Run in container: (cat /etc/os-release || cat /usr/lib/os-release) 2>/dev/null
+[6435 ms] PRETTY_NAME="Debian GNU/Linux 11 (bullseye)"
+NAME="Debian GNU/Linux"
+VERSION_ID="11"
+VERSION="11 (bullseye)"
+VERSION_CODENAME=bullseye
+ID=debian
+HOME_URL="https://www.debian.org/"
+SUPPORT_URL="https://www.debian.org/support"
+BUG_REPORT_URL="https://bugs.debian.org/"
+[6435 ms] 
+[6435 ms] Start: Run in container: cat /etc/passwd
+[6456 ms] Start: Run in container: test -f '/var/devcontainer/.patchEtcEnvironmentMarker'
+[6459 ms] 
+[6459 ms] 
+[6460 ms] Exit code 1
+[6460 ms] Start: Run in container: /bin/sh
+[6461 ms] Start: Run in container: test ! -f '/var/devcontainer/.patchEtcEnvironmentMarker' && set -o noclobber && mkdir -p '/var/devcontainer' && { > '/var/devcontainer/.patchEtcEnvironmentMarker' ; } 2> /dev/null
+[6576 ms] 
+[6576 ms] 
+[6576 ms] Start: Run in container: cat >> /etc/environment <<'etcEnvrionmentEOF'
+[6599 ms] 
+[6599 ms] 
+[6599 ms] Start: Run in container: test -f '/var/devcontainer/.patchEtcProfileMarker'
+[6602 ms] 
+[6602 ms] 
+[6602 ms] Exit code 1
+[6602 ms] Start: Run in container: test ! -f '/var/devcontainer/.patchEtcProfileMarker' && set -o noclobber && mkdir -p '/var/devcontainer' && { > '/var/devcontainer/.patchEtcProfileMarker' ; } 2> /dev/null
+[6631 ms] 
+[6631 ms] 
+[6631 ms] Start: Run in container: sed -i -E 's/((^|\s)PATH=)([^\$]*)$/\1${PATH:-\3}/g' /etc/profile || true
+[6675 ms] 
+[6675 ms] 
+[6679 ms] Start: Run: docker inspect --type container dd26febe15ca97748f580644379ebfc966115bfbfb99eb696cbe14c2aea03884
+[6719 ms] Start: Run: docker exec -i -u root dd26febe15ca97748f580644379ebfc966115bfbfb99eb696cbe14c2aea03884 /bin/sh -c echo "New container started. Keep-alive process started." ; export VSCODE_REMOTE_CONTAINERS_SESSION=44a37fe8-29bd-43f8-8e5f-85ece9cba0571688603075718 ; /bin/sh
+[6721 ms] Start: Run: /Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper (Plugin).app/Contents/MacOS/Code Helper (Plugin) --ms-enable-electron-run-as-node /Users/val/.vscode/extensions/ms-vscode-remote.remote-containers-0.295.0/dist/spec-node/devContainersSpecCLI.js read-configuration --workspace-folder /Users/val/dev/ApiLogicServer/ApiLogicServer-dev/servers/beta --id-label devcontainer.local_folder=/Users/val/dev/ApiLogicServer/ApiLogicServer-dev/servers/beta --id-label devcontainer.config_file=/Users/val/dev/ApiLogicServer/ApiLogicServer-dev/servers/beta/.devcontainer/devcontainer.json --container-id dd26febe15ca97748f580644379ebfc966115bfbfb99eb696cbe14c2aea03884 --log-level debug --log-format json --config /Users/val/dev/ApiLogicServer/ApiLogicServer-dev/servers/beta/.devcontainer/devcontainer.json --include-merged-configuration --mount-workspace-git-root true
+[6806 ms] New container started. Keep-alive process started.
+[6861 ms] @devcontainers/cli 0.42.0. Node.js v16.17.1. darwin 22.5.0 arm64.
+[6861 ms] Start: Run: git rev-parse --show-cdup
+[6872 ms] Start: Run: docker inspect --type container dd26febe15ca97748f580644379ebfc966115bfbfb99eb696cbe14c2aea03884
+[6914 ms] Start: Inspecting container
+[6914 ms] Start: Run: docker inspect --type container dd26febe15ca97748f580644379ebfc966115bfbfb99eb696cbe14c2aea03884
+[6959 ms] Start: Run in container: /bin/sh
+[6960 ms] Start: Run in container: uname -m
+[7070 ms] x86_64
+[7070 ms] 
+[7070 ms] Start: Run in container: (cat /etc/os-release || cat /usr/lib/os-release) 2>/dev/null
+[7093 ms] PRETTY_NAME="Debian GNU/Linux 11 (bullseye)"
+NAME="Debian GNU/Linux"
+VERSION_ID="11"
+VERSION="11 (bullseye)"
+VERSION_CODENAME=bullseye
+ID=debian
+HOME_URL="https://www.debian.org/"
+SUPPORT_URL="https://www.debian.org/support"
+BUG_REPORT_URL="https://bugs.debian.org/"
+[7093 ms] 
+[7093 ms] Start: Run in container: cat /etc/passwd
+[7114 ms] Start: Run in container: command -v git >/dev/null 2>&1 && cd '/workspaces/beta' && test -d .git && test "$(stat -c %u .)" != "$(id -u)"
+[7168 ms] 
+[7168 ms] 
+[7168 ms] Start: Run: /bin/sh -c cd '/Users/val/dev/ApiLogicServer/ApiLogicServer-dev/servers/beta' && test "$(stat -f %u .)" = "$(id -u)"
+[7181 ms] Start: Updating configuration state
+[7232 ms] Start: Setup shutdown monitor
+[7232 ms] Forking shutdown monitor: /Users/val/.vscode/extensions/ms-vscode-remote.remote-containers-0.295.0/dist/shutdown/shutdownMonitorProcess /var/folders/4k/r69q312d4j788fthspybb88m0000gp/T/vscode-remote-containers-cc6f7886-df31-4f5d-9166-b1c8013d16f3.sock singleContainer Debug /Users/val/Library/Application Support/Code/logs/20230704T150901/window9/exthost/ms-vscode-remote.remote-containers 1688603076023
+[7233 ms] Start: Run in container: test -d /home/api_logic_server/.vscode-server
+[7238 ms] 
+[7238 ms] 
+[7238 ms] Exit code 1
+[7238 ms] Start: Run in container: test -d /home/api_logic_server/.vscode-remote
+[7242 ms] 
+[7242 ms] 
+[7242 ms] Exit code 1
+[7242 ms] Start: Run in container: test ! -f '/home/api_logic_server/.vscode-server/data/Machine/.writeMachineSettingsMarker' && set -o noclobber && mkdir -p '/home/api_logic_server/.vscode-server/data/Machine' && { > '/home/api_logic_server/.vscode-server/data/Machine/.writeMachineSettingsMarker' ; } 2> /dev/null
+[7270 ms] 
+[7270 ms] 
+[7270 ms] Start: Run in container: mkdir -p '/home/api_logic_server/.vscode-server/data/Machine' && cat >'/home/api_logic_server/.vscode-server/data/Machine/settings.json' <<'settingsJSON'
+[7317 ms] 
+[7317 ms] 
+[7318 ms] Start: Run in container: test -d /home/api_logic_server/.vscode-server/bin/695af097c7bd098fbf017ce3ac85e09bbc5dda06
+[7321 ms] 
+[7321 ms] 
+[7321 ms] Exit code 1
+[7321 ms] Start: Run in container: test -d /vscode/vscode-server/bin/linux-x64/695af097c7bd098fbf017ce3ac85e09bbc5dda06
+[7324 ms] 
+[7324 ms] 
+[7324 ms] Start: Run in container: mkdir -p '/home/api_logic_server/.vscode-server/bin' && ln -snf '/vscode/vscode-server/bin/linux-x64/695af097c7bd098fbf017ce3ac85e09bbc5dda06' '/home/api_logic_server/.vscode-server/bin/695af097c7bd098fbf017ce3ac85e09bbc5dda06'
+[7373 ms] 
+[7373 ms] 
+[7374 ms] Start: Run in container: /bin/sh
+[7376 ms] Start: Launching Dev Containers helper.
+[7376 ms] ssh-agent: SSH_AUTH_SOCK in container (/tmp/vscode-ssh-auth-3b9cda55-3b73-4af3-a978-1525e0ee0158.sock) forwarded to local host (/private/tmp/com.apple.launchd.G9aHV1F6cB/Listeners).
+[7376 ms] X11 forwarding: DISPLAY not set on local host.
+[7376 ms] Start: Run in container: gpgconf --list-dir agent-socket
+[7377 ms] Start: Run in container: touch '/vscode/vscode-server/bin/linux-x64/695af097c7bd098fbf017ce3ac85e09bbc5dda06'
+[7412 ms] /home/api_logic_server/.gnupg/S.gpg-agent
+[7412 ms] 
+[7412 ms] Start: Run in container: gpgconf --list-dir homedir
+[7446 ms] /home/api_logic_server/.gnupg
+[7447 ms] 
+[7447 ms] Start: Run in container: ls '/home/api_logic_server/.gnupg/private-keys-v1.d' 2>/dev/null
+[7477 ms] 
+[7477 ms] 
+[7477 ms] Exit code 2
+[7477 ms] Start: Run: gpgconf --list-dir agent-extra-socket
+[7479 ms] gpg-agent: No agent-extra-socket found on local host.
+[7479 ms] Start: Run in container: command -v docker >/dev/null 2>&1
+[7482 ms] 
+[7483 ms] 
+[7483 ms] Exit code 127
+[7483 ms] Start: Run in container: /bin/sh
+[7484 ms] userEnvProbe: loginInteractiveShell (default)
+[7484 ms] Start: Run in container: test -f '/tmp/devcontainers-44a37fe8-29bd-43f8-8e5f-85ece9cba0571688603075718/env-loginInteractiveShell.json'
+[7484 ms] Start: Run in container: echo ~
+[7487 ms] 
+[7487 ms] 
+[7487 ms] Exit code 1
+[7488 ms] userEnvProbe: not found in cache
+[7488 ms] userEnvProbe shell: /bin/bash
+[7507 ms] 
+[7508 ms] 
+[7508 ms] Start: Run in container: command -v git >/dev/null 2>&1 && git config --system --replace-all credential.helper '!f() { /home/api_logic_server/.vscode-server/bin/695af097c7bd098fbf017ce3ac85e09bbc5dda06/node /tmp/vscode-remote-containers-3b9cda55-3b73-4af3-a978-1525e0ee0158.js git-credential-helper $*; }; f' || true
+[7553 ms] 
+[7553 ms] 
+[7554 ms] Start: Run in container: for pid in `cd /proc && ls -d [0-9]*`; do { echo $pid ; readlink /proc/$pid/cwd || echo ; readlink /proc/$pid/ns/mnt || echo ; cat /proc/$pid/stat | tr "
+[7579 ms] /home/api_logic_server
+[7579 ms] 
+[7579 ms] Start: Run in container: cat <<'EOF-/tmp/vscode-remote-containers-3b9cda55-3b73-4af3-a978-1525e0ee0158.js' >/tmp/vscode-remote-containers-3b9cda55-3b73-4af3-a978-1525e0ee0158.js
+[7603 ms] 
+[7603 ms] 
+[7603 ms] Start: Run in container: cat <<'EOF-/tmp/vscode-remote-containers-server-3b9cda55-3b73-4af3-a978-1525e0ee0158.js' >/tmp/vscode-remote-containers-server-3b9cda55-3b73-4af3-a978-1525e0ee0158.js_1688603083626
+[7655 ms] 
+[7655 ms] 
+[8596 ms] Start: Run in container: cat '/home/api_logic_server/.vscode-server/bin/695af097c7bd098fbf017ce3ac85e09bbc5dda06/product.json'
+[8626 ms] Start: Run in container: cat '/home/api_logic_server/.vscode-server/data/Machine/.connection-token-695af097c7bd098fbf017ce3ac85e09bbc5dda06' 2>/dev/null || (umask 377 && echo '68e4f0f1-371a-4372-a0c1-c089c7ab60a3' >'/home/api_logic_server/.vscode-server/data/Machine/.connection-token-695af097c7bd098fbf017ce3ac85e09bbc5dda06-f5a571ce-43d0-4b07-83dd-be22781ff001' && mv -n '/home/api_logic_server/.vscode-server/data/Machine/.connection-token-695af097c7bd098fbf017ce3ac85e09bbc5dda06-f5a571ce-43d0-4b07-83dd-be22781ff001' '/home/api_logic_server/.vscode-server/data/Machine/.connection-token-695af097c7bd098fbf017ce3ac85e09bbc5dda06' && rm -f '/home/api_logic_server/.vscode-server/data/Machine/.connection-token-695af097c7bd098fbf017ce3ac85e09bbc5dda06-f5a571ce-43d0-4b07-83dd-be22781ff001' && cat '/home/api_logic_server/.vscode-server/data/Machine/.connection-token-695af097c7bd098fbf017ce3ac85e09bbc5dda06')
+[8723 ms] 68e4f0f1-371a-4372-a0c1-c089c7ab60a3
+[8724 ms] 
+[8724 ms] Start: Starting VS Code Server
+[8725 ms] Start: Preparing Extensions
+[8725 ms] Start: Run in container: test ! -f '/home/api_logic_server/.vscode-server/data/Machine/.installExtensionsMarker' && set -o noclobber && mkdir -p '/home/api_logic_server/.vscode-server/data/Machine' && { > '/home/api_logic_server/.vscode-server/data/Machine/.installExtensionsMarker' ; } 2> /dev/null
+[8754 ms] 
+[8755 ms] 
+[8756 ms] Extensions cache, install extensions: None
+[8756 ms] Start: Run in container: test -d /home/api_logic_server/.vscode-server/extensionsCache && ls /home/api_logic_server/.vscode-server/extensionsCache || true
+[8759 ms] 
+[8759 ms] 
+[8759 ms] Start: Run in container: test -d /vscode/vscode-server/extensionsCache && ls /vscode/vscode-server/extensionsCache || true
+[8789 ms] ms-python.isort-2022.8.0
+ms-python.python-2022.18.2
+ms-python.python-2022.20.1
+ms-python.python-2022.20.2
+ms-python.python-2023.10.1
+ms-python.python-2023.10.1.sigzip
+ms-python.python-2023.4.1
+ms-python.python-2023.4.1.sigzip
+ms-python.vscode-pylance-2022.11.40
+ms-python.vscode-pylance-2022.12.20
+ms-python.vscode-pylance-2023.1.10
+ms-python.vscode-pylance-2023.1.30
+ms-python.vscode-pylance-2023.1.40
+ms-python.vscode-pylance-2023.2.10
+ms-python.vscode-pylance-2023.3.20
+ms-python.vscode-pylance-2023.6.40
+ms-toolsai.jupyter-2022.11.1003412109
+ms-toolsai.jupyter-2022.9.1303220346
+ms-toolsai.jupyter-2023.2.1200692131
+ms-toolsai.jupyter-2023.2.1200692131.sigzip
+ms-toolsai.jupyter-keymap-1.0.0
+ms-toolsai.jupyter-keymap-1.1.0
+ms-toolsai.jupyter-keymap-1.1.0.sigzip
+ms-toolsai.jupyter-renderers-1.0.12
+ms-toolsai.jupyter-renderers-1.0.14
+ms-toolsai.jupyter-renderers-1.0.15
+ms-toolsai.jupyter-renderers-1.0.15.sigzip
+ms-toolsai.vscode-jupyter-cell-tags-0.1.6
+ms-toolsai.vscode-jupyter-cell-tags-0.1.8
+ms-toolsai.vscode-jupyter-cell-tags-0.1.8.sigzip
+ms-toolsai.vscode-jupyter-slideshow-0.1.5
+ms-toolsai.vscode-jupyter-slideshow-0.1.5.sigzip
+[8789 ms] 
+[8789 ms] Extensions cache, link in container: None
+[8790 ms] Optimizing extensions for quality: stable
+[8790 ms] Start: Run in container: /home/api_logic_server/.vscode-server/bin/695af097c7bd098fbf017ce3ac85e09bbc5dda06/bin/code-server --log debug --force-disable-user-env --server-data-dir /home/api_logic_server/.vscode-server --telemetry-level all --accept-server-license-terms --host 127.0.0.1 --port 0 --connection-token-file /home/api_logic_server/.vscode-server/data/Machine/.connection-token-695af097c7bd098fbf017ce3ac85e09bbc5dda06 --extensions-download-dir /home/api_logic_server/.vscode-server/extensionsCache --start-server 
+[9472 ms] *
+* Visual Studio Code Server
+*
+* By using the software, you agree to
+* the Visual Studio Code Server License Terms (https://aka.ms/vscode-server-license) and
+* the Microsoft Privacy Statement (https://privacy.microsoft.com/en-US/privacystatement).
+*
+[9511 ms] Server bound to 127.0.0.1:41975 (IPv4)
+Extension host agent listening on 41975
+
+[9512 ms] Start: Run in container: echo 41975 >'/home/api_logic_server/.vscode-server/data/Machine/.devport-695af097c7bd098fbf017ce3ac85e09bbc5dda06'
+[9515 ms] 
+[9515 ms] 
+[9516 ms] Port forwarding for container port 41975 starts listening on local port.
+[9517 ms] Port forwarding local port 41975 to container port 41975
+[9517 ms] Start: Run in container: # Test for /home/api_logic_server/.gitconfig and git
+[9544 ms] 
+[9544 ms] 
+[9544 ms] Start: Run in container: # Copy /Users/val/.gitconfig to /home/api_logic_server/.gitconfig
+[9597 ms] 
+[9597 ms] 
+[9598 ms] Start: Run in container: command -v git >/dev/null 2>&1 && git config --global --replace-all credential.helper '!f() { /home/api_logic_server/.vscode-server/bin/695af097c7bd098fbf017ce3ac85e09bbc5dda06/node /tmp/vscode-remote-containers-3b9cda55-3b73-4af3-a978-1525e0ee0158.js git-credential-helper $*; }; f' || true
+[9637 ms] 
+[9637 ms] 
+[9638 ms] Start: Run in container: git config --global --add safe.directory '/workspaces/beta'
+[9671 ms] 
+[9671 ms] 
+[9672 ms] Start: Run in container: for pid in `cd /proc && ls -d [0-9]*`; do { echo $pid ; readlink /proc/$pid/cwd || echo ; readlink /proc/$pid/ns/mnt || echo ; cat /proc/$pid/stat | tr "
+[9672 ms] Start: Run: /Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper (Plugin).app/Contents/MacOS/Code Helper (Plugin) --ms-enable-electron-run-as-node /Users/val/.vscode/extensions/ms-vscode-remote.remote-containers-0.295.0/dist/spec-node/devContainersSpecCLI.js run-user-commands --user-data-folder /Users/val/Library/Application Support/Code/User/globalStorage/ms-vscode-remote.remote-containers/data --container-session-data-folder /tmp/devcontainers-44a37fe8-29bd-43f8-8e5f-85ece9cba0571688603075718 --workspace-folder /Users/val/dev/ApiLogicServer/ApiLogicServer-dev/servers/beta --id-label devcontainer.local_folder=/Users/val/dev/ApiLogicServer/ApiLogicServer-dev/servers/beta --id-label devcontainer.config_file=/Users/val/dev/ApiLogicServer/ApiLogicServer-dev/servers/beta/.devcontainer/devcontainer.json --container-id dd26febe15ca97748f580644379ebfc966115bfbfb99eb696cbe14c2aea03884 --log-level debug --log-format json --config /Users/val/dev/ApiLogicServer/ApiLogicServer-dev/servers/beta/.devcontainer/devcontainer.json --default-user-env-probe loginInteractiveShell --skip-non-blocking-commands false --prebuild false --stop-for-personalization false --remote-env REMOTE_CONTAINERS_IPC=/tmp/vscode-remote-containers-ipc-3b9cda55-3b73-4af3-a978-1525e0ee0158.sock --remote-env SSH_AUTH_SOCK=/tmp/vscode-ssh-auth-3b9cda55-3b73-4af3-a978-1525e0ee0158.sock --remote-env REMOTE_CONTAINERS=true --mount-workspace-git-root true --terminal-columns 78 --terminal-rows 15 --dotfiles-target-path ~/dotfiles
+[9822 ms] @devcontainers/cli 0.42.0. Node.js v16.17.1. darwin 22.5.0 arm64.
+[9822 ms] Start: Run: docker buildx version
+[9906 ms] github.com/docker/buildx v0.10.5 86bdced7766639d56baa4c7c449a4f6468490f87
+[9906 ms] 
+[9907 ms] Start: Run: git rev-parse --show-cdup
+[9918 ms] Start: Run: docker inspect --type container dd26febe15ca97748f580644379ebfc966115bfbfb99eb696cbe14c2aea03884
+[9962 ms] Start: Inspecting container
+[9962 ms] Start: Run: docker inspect --type container dd26febe15ca97748f580644379ebfc966115bfbfb99eb696cbe14c2aea03884
+[10005 ms] Start: Run in container: /bin/sh
+[10006 ms] Start: Run in container: uname -m
+[10130 ms] x86_64
+[10130 ms] 
+[10130 ms] Start: Run in container: (cat /etc/os-release || cat /usr/lib/os-release) 2>/dev/null
+[10156 ms] PRETTY_NAME="Debian GNU/Linux 11 (bullseye)"
+NAME="Debian GNU/Linux"
+VERSION_ID="11"
+VERSION="11 (bullseye)"
+VERSION_CODENAME=bullseye
+ID=debian
+HOME_URL="https://www.debian.org/"
+SUPPORT_URL="https://www.debian.org/support"
+BUG_REPORT_URL="https://bugs.debian.org/"
+[10156 ms] 
+[10157 ms] Start: Run in container: cat /etc/passwd
+[10182 ms] userEnvProbe: loginInteractiveShell (default)
+[10182 ms] Start: Run in container: test -f '/tmp/devcontainers-44a37fe8-29bd-43f8-8e5f-85ece9cba0571688603075718/env-loginInteractiveShell.json'
+[10190 ms] 
+[10190 ms] 
+[10190 ms] Exit code 1
+[10190 ms] Start: Run in container: mkdir -p '/home/api_logic_server/.devcontainer' && CONTENT="$(cat '/home/api_logic_server/.devcontainer/.onCreateCommandMarker' 2>/dev/null || echo ENOENT)" && [ "${CONTENT:-2023-07-06T00:24:42.007819668Z}" != '2023-07-06T00:24:42.007819668Z' ] && echo '2023-07-06T00:24:42.007819668Z' > '/home/api_logic_server/.devcontainer/.onCreateCommandMarker'
+[10190 ms] userEnvProbe: not found in cache
+[10190 ms] userEnvProbe shell: /bin/bash
+[10190 ms] Start: Run in container: /bin/bash -lic echo -n f7e65062-190c-41bd-b15d-47696c23b4c7; cat /proc/self/environ; echo -n f7e65062-190c-41bd-b15d-47696c23b4c7
+[10278 ms] 
+[10278 ms] 
+[10278 ms] Start: Run in container: mkdir -p '/home/api_logic_server/.devcontainer' && CONTENT="$(cat '/home/api_logic_server/.devcontainer/.updateContentCommandMarker' 2>/dev/null || echo ENOENT)" && [ "${CONTENT:-2023-07-06T00:24:42.007819668Z}" != '2023-07-06T00:24:42.007819668Z' ] && echo '2023-07-06T00:24:42.007819668Z' > '/home/api_logic_server/.devcontainer/.updateContentCommandMarker'
+[10345 ms] 
+[10345 ms] 
+[10345 ms] Start: Run in container: mkdir -p '/home/api_logic_server/.devcontainer' && CONTENT="$(cat '/home/api_logic_server/.devcontainer/.postCreateCommandMarker' 2>/dev/null || echo ENOENT)" && [ "${CONTENT:-2023-07-06T00:24:42.007819668Z}" != '2023-07-06T00:24:42.007819668Z' ] && echo '2023-07-06T00:24:42.007819668Z' > '/home/api_logic_server/.devcontainer/.postCreateCommandMarker'
+[10439 ms] 
+[10439 ms] 
+[10439 ms] Start: Run in container: mkdir -p '/home/api_logic_server/.devcontainer' && CONTENT="$(cat '/home/api_logic_server/.devcontainer/.postStartCommandMarker' 2>/dev/null || echo ENOENT)" && [ "${CONTENT:-2023-07-06T00:24:42.188407335Z}" != '2023-07-06T00:24:42.188407335Z' ] && echo '2023-07-06T00:24:42.188407335Z' > '/home/api_logic_server/.devcontainer/.postStartCommandMarker'
+[10531 ms] 
+[10531 ms] 
+Running the postAttachCommand from devcontainer.json...
+
+[10910 ms] [00:24:46] 
+
+
+
+
+[11233 ms] [00:24:47] Extension host agent started.
+[11558 ms] userEnvProbe PATHs:
+Probe:     '/home/api_logic_server/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/api_logic_server/bin'
+Container: '/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+[11613 ms] [00:24:47] No uninstalled extensions found.
+[11654 ms] [00:24:47] Started initializing default profile extensions in extensions installation folder. file:///home/api_logic_server/.vscode-server/extensions
+[11725 ms] [00:24:47] ComputeTargetPlatform: linux-x64
+[11755 ms] [00:24:47] Completed initializing default profile extensions in extensions installation folder. file:///home/api_logic_server/.vscode-server/extensions
+[12066 ms] Start: Run in container: mkdir -p '/tmp/devcontainers-44a37fe8-29bd-43f8-8e5f-85ece9cba0571688603075718' && cat > '/tmp/devcontainers-44a37fe8-29bd-43f8-8e5f-85ece9cba0571688603075718/env-loginInteractiveShell.json' << 'envJSON'
+[12067 ms] userEnvProbe is taking longer than 2 seconds. Process not found.
+[12112 ms] 
+[12113 ms] 
+[12120 ms] Port forwarding connection from 53254 > 41975 > 41975 in the container.
+[12120 ms] Start: Run in container: /home/api_logic_server/.vscode-server/bin/695af097c7bd098fbf017ce3ac85e09bbc5dda06/node -e 
+[12192 ms] Start: Run in container: for pid in `cd /proc && ls -d [0-9]*`; do { echo $pid ; readlink /proc/$pid/cwd ; readlink /proc/$pid/ns/mnt ; cat /proc/$pid/stat | tr "
+[12751 ms] Port forwarding 53254 > 41975 > 41975 stderr: Connection established
+[12793 ms] Port forwarding connection from 53255 > 41975 > 41975 in the container.
+[12794 ms] Start: Run in container: /home/api_logic_server/.vscode-server/bin/695af097c7bd098fbf017ce3ac85e09bbc5dda06/node -e 
+[12977 ms] [00:24:48] [127.0.0.1][930f6474][ManagementConnection] New connection established.
+[13072 ms] [00:24:49] Log level changed to info
+[13411 ms] Port forwarding 53255 > 41975 > 41975 stderr: Connection established
+[13606 ms] userEnvProbe PATHs:
+Probe:     '/home/api_logic_server/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/api_logic_server/bin'
+Container: '/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+[14983 ms] [00:24:51] [127.0.0.1][2dd8c866][ExtensionHostConnection] New connection established.
+[15056 ms] [00:24:51] [127.0.0.1][2dd8c866][ExtensionHostConnection] <1360> Launched Extension Host Process.
+[15681 ms] Start: Run in container: mkdir -p '/tmp/devcontainers-44a37fe8-29bd-43f8-8e5f-85ece9cba0571688603075718' && cat > '/tmp/devcontainers-44a37fe8-29bd-43f8-8e5f-85ece9cba0571688603075718/env-loginInteractiveShell.json' << 'envJSON'
+[15683 ms] userEnvProbe is taking longer than 2 seconds. Process not found.
+[15757 ms] 
+[15757 ms] 
+[15758 ms] Start: Run in container: /bin/sh -c /bin/bash .devcontainer/setup.sh
+Codespace ready
