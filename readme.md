@@ -34,6 +34,9 @@ Submitted [this issue](https://github.com/microsoft/vscode-python/issues/21554).
 		}
 	},
 ```
+Appears to hang:
+
+![Python install hangs](images/vscode/python-install-hangs.png)
 
 &nbsp;
 
