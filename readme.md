@@ -17,7 +17,10 @@ For more details, [click here](#docker-arm-fails).
 
 Submitted [this issue](https://github.com/microsoft/vscode-python/issues/21554).
 
-* 7/6: as suggested, updated `.devcontainer/devcontainer.json` - still not loading.  See .devcontainer/log.txt
+* 7/6: as suggested, updated `.devcontainer/devcontainer.json` - still not loading.
+    * See .devcontainer/log.txt
+    * Extension disabled: 
+    ![Unable to load Python - extension dsiabled](images/vscode/python-disabled.png)    
 
 &nbsp;
 
