@@ -17,10 +17,23 @@ For more details, [click here](#docker-arm-fails).
 
 Submitted [this issue](https://github.com/microsoft/vscode-python/issues/21554).
 
-* 7/6: as suggested, updated `.devcontainer/devcontainer.json` - still not loading.
+* 7/5: as suggested, updated `.devcontainer/devcontainer.json` - still not loading.
     * See .devcontainer/log.txt
     * Extension disabled: 
-    ![Unable to load Python - extension dsiabled](images/vscode/python-disabled.png)    
+    ![Unable to load Python - extension dsiabled](images/vscode/python-disabled.png)  
+
+* 7/6: as further suggested, updated `.devcontainer/devcontainer.json` - still not loading.
+
+```
+	"customizations": {
+		// Configure properties specific to VS Code.
+		"vscode": {
+			// Set default container specific settings.json values on container create.
+			"settings": {},
+			"extensions": ["ms-python.python"]
+		}
+	},
+```
 
 &nbsp;
 
